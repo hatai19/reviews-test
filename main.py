@@ -35,7 +35,6 @@ class ReviewOutput(BaseModel):
     sentiment: str
     created_at: str
 
-
 def analyze_sentiment(text: str) -> str:
     text = text.lower()
     positive_words = ['хорош', 'люблю', 'нравится', 'отличн', 'прекрасн', 'супер', 'класс']
@@ -46,6 +45,7 @@ def analyze_sentiment(text: str) -> str:
     elif any(word in text for word in negative_words):
         return 'negative'
     return 'neutral'
+
 
 
 @app.post("/reviews", response_model=ReviewOutput)
